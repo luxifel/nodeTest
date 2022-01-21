@@ -1,28 +1,11 @@
-# nodeTest
+## SCALAPAY FULLSTACK TASK
 
-## Task
-
-Have a look at the website https://developers.scalapay.com/  and write an interface that:
-
-- Creates an order
-- Prompt the user to enter the fields required to create an order.
-- Call the v2/orders endpoint.
-- Redirect the user to the checkoutUrl provided in the response.
-
-
-## Testing Credentials:
-
-- https://portal.staging.scalapay.com/login
-
-
-## Additional:
-
-- Add a README.md file that explains how to run the application.
-- The back-end should be written using Node.js.
-- You can use any framework you like on the front-end, React is a bonus.
-
-
-## Don’t forget:
-
-- Best practices
-- Testing
+###How to run the application
+1. Install PHP dependencies with ``composer install``
+2. Get configurations with ``cp configs.local.ini configs.ini``
+3. (Optional) Only if you need xdebug and you are on a Linux machine in ./docker/docker-compose.yml change host.docker.internal with your machine private IP 
+4. Run docker containers with ``cd .docker/ && docker-compose up --build``
+5. Restore DB with 
+   ``cat ./dumps/backup.sql | docker exec -i docker_mariadb_1 /usr/bin/mysql -u root --password=root scalapay
+   ``
+6. Enjoy you applicationn at http://localhost   

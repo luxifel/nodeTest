@@ -1,0 +1,22 @@
+{
+    "name": "scalapay/full-stack-task",
+    "description": "Scalapay Fullstack Task",
+    "minimum-stability": "dev",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ariele Pignatta",
+            "email": "ariele.pignatta@e.email"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.4",
+        "twig/twig": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ScalapayTask\\": ""
+        }
+    }
+
+}
