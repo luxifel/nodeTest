@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  apache:
+    image: webdevops/php-apache-dev:7.3
+    environment:
+      WEB_DOCUMENT_ROOT: /var/www/html/public/
+      WEB_DOCUMENT_INDEX: index.php
+      XDEBUG_MODE: develop,debug
+      XDEBUG_CLIENT_HOST: host.docker.internal
+      XDEBUG_CLIENT_PORT: 9003
+      restart: always
+    volumes:
+      - ../:/var/www/html/
+    depends_on:
+      - mariadb
+    ports:
+      - 80:80
+      - 443:443
+    links:
+      - mariadb
+
+  mariadb:
+    image: mariadb
+    volumes:
+      - ./db:/var/lib/mysql
+      - ./dumps/backup.sql:/tmp/dump/backup.sql
+    ports:
+      - 3306:3306
+    environment:
+      TZ: "Europe/Rome"
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "scalapay"
+
+volumes:
+  mariadb:
